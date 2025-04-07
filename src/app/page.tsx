@@ -16,7 +16,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-
+import Image from 'next/image';
 
 interface Recipe {
   title: string,
@@ -49,7 +49,12 @@ export default async function Home() {
           <Card key={recipe.id} className="card flex flex-col justify-between">
             <CardHeader className="header flex-row gap-4 items-center">
               <div className="cover">
-                <img src={`/img/${recipe.image}`} />
+                <Image 
+                  src={`/img/${recipe.image}`}
+                  alt={`Cover of ${recipe.title}`}
+                  width={48}
+                  height={48}
+                />
               </div>
               <div>
                 <CardTitle className="tittle">{recipe.title}</CardTitle>

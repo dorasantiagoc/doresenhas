@@ -16,7 +16,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import Image from 'next/image';
+import Image from 'next/image'
+import { recipes as staticRecipes } from '@/data/recipes';
 
 interface Recipe {
   title: string,
@@ -31,11 +32,22 @@ interface Recipe {
 }
 
 async function getRecipes(): Promise<Recipe[]> {
-  const result = await fetch('http://localhost:4000/recipes')
-  
-  await new Promise((resolve) => setTimeout(resolve, 3000))
-
-  return result.json()
+  if (process.env.NODE_ENV === 'development') {
+    try {
+      const result = await fetch('http://localhost:4000/recipes', {
+        next: { revalidate: 0 }
+      });
+      
+      if (!result.ok) {
+        throw new Error(`HTTP error! status: ${result.status}`);
+      }
+      return result.json();
+    } catch (error) {
+      console.warn('Failed to fetch from API, falling back to static data:', error);
+      return staticRecipes;
+    }
+  }
+  return staticRecipes;
 }
 
 

@@ -17,43 +17,9 @@ import {
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import Image from 'next/image'
-import { recipes as staticRecipes } from '@/data/recipes';
+import { recipes } from '@/data/recipes'
 
-interface Recipe {
-  title: string,
-  image: string,
-  autor: string,
-  description: string,
-  link: string,
-  id: string,
-  modal: string
-  modal2: string
-  modal3: string
-}
-
-async function getRecipes(): Promise<Recipe[]> {
-  if (process.env.NODE_ENV === 'development') {
-    try {
-      const result = await fetch('http://localhost:4000/recipes', {
-        next: { revalidate: 0 }
-      });
-      
-      if (!result.ok) {
-        throw new Error(`HTTP error! status: ${result.status}`);
-      }
-      return result.json();
-    } catch (error) {
-      console.warn('Failed to fetch from API, falling back to static data:', error);
-      return staticRecipes;
-    }
-  }
-  return staticRecipes;
-}
-
-
-export default async function Home() {
-  const recipes = await getRecipes()
-
+export default function Home() {
   return (
     <main>
       <div className="grid grid-cols-2 gap-8">

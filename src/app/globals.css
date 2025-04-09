@@ -162,7 +162,7 @@ main .card {
   border: 2px solid #000;
   display: flex;
   padding: 40px;
-  max-width: 600px;
+  width: 600px;
   margin: auto;
   gap: 16px;
 }

@@ -278,3 +278,64 @@ main .cover img {
 .modalheader {
   gap: 16px;
 }
+
+@media (max-width: 1024px) {
+  main {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  main .card {
+    width: 387px;
+    height: 350px;
+    padding: 30px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  nav .container {
+    padding-top: 50px;
+    padding-bottom: 40px;
+  }
+
+  nav .container h1 {
+    font-size: 40px;
+  }
+
+  nav .container p {
+    font-size: 18px;
+  }
+
+  main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  main .card {
+    padding: 20px;
+    width: 516px;
+    height: 250px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .tittle {
+    font-size: 24px;
+  }
+
+  .autor, .description {
+    font-size: 16px;
+  }
+
+  .button, .buttonHeader {
+    font-size: 16px;
+    padding: 12px;
+  }
+}

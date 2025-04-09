@@ -22,7 +22,7 @@ import { recipes } from '@/data/recipes'
 export default function Home() {
   return (
     <main>
-      <div className="grid grid-cols-2 gap-8">
+      <div className="cards grid grid-cols-2 gap-8">
         {recipes.map(recipe => (
           <Card key={recipe.id} className="card flex flex-col justify-between">
             <CardHeader className="header flex-row gap-4 items-center">

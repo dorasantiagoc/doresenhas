@@ -162,8 +162,15 @@ main .card {
   border: 2px solid #000;
   display: flex;
   padding: 40px;
-  width: 600px;
+  max-width: 600px;
+  margin: auto;
   gap: 16px;
+}
+
+main .cards {
+  max-width: 1240px;
+  margin: auto;
+  align-items: center;
 }
 
 main .card:hover {
